@@ -30,9 +30,9 @@ void MyThread_1::run()
     }
 
     //3、获取文件保存地址(保存的文件夹)
-    QString saveDir = m_Path_1;
-    saveDir.replace('\\','/');
-    QDir dir(saveDir);              //需要包含头文件<QDir>
+    QString saveDir_1 = m_Path_1;
+    saveDir_1.replace('\\','/');
+    QDir dir(saveDir_1);              //需要包含头文件<QDir>
     if(!dir.exists("temp"))
     {
         dir.mkdir("temp");
@@ -40,19 +40,19 @@ void MyThread_1::run()
     {
         qDebug()<<"文件夹已经存在";
     }
-    saveDir = saveDir+"/temp/";
+    saveDir_1 = saveDir_1+"/temp/";
 
     //4、获取文件完整路径（文件夹+文件名）
-    QString fullFilename = saveDir+newUrl_1.fileName()+".jpg";
-    //    QString full = saveDir + "1";
-    //    QString fullFilename = full+".jpg";
-    if(QFile::exists(fullFilename))
+    QString fullFilename_1 = saveDir_1+newUrl_1.fileName()+".jpg";
+    //    QString full = saveDir_1 + "1";
+    //    QString fullFilename_1 = full+".jpg";
+    if(QFile::exists(fullFilename_1))
     {
-        QFile::remove(fullFilename);
+        QFile::remove(fullFilename_1);
         qDebug()<<"该图片已经存在";
     }
 
-    onlineFile_1 = new QFile(fullFilename);
+    onlineFile_1 = new QFile(fullFilename_1);
     if(!onlineFile_1->open((QIODevice::WriteOnly)))
     {
         qDebug()<<"临时文件一打开错误";
@@ -102,17 +102,17 @@ void MyThread_2::run()
     QUrl newUrl_2 =QUrl::fromUserInput(m_URL_2);//需要包含头文件<QUrl>
     if(newUrl_2.isValid())
     {
-        qDebug()<<"有效下载地址1";
+        qDebug()<<"有效下载地址2";
     }
     else
     {
-        qDebug()<<"无效下载地址1";
+        qDebug()<<"无效下载地址2";
     }
 
     //3、获取文件保存地址(保存的文件夹)
-    QString saveDir = m_Path_2;
-    saveDir.replace('\\','/');
-    QDir dir(saveDir);              //需要包含头文件<QDir>
+    QString saveDir_2 = m_Path_2;
+    saveDir_2.replace('\\','/');
+    QDir dir(saveDir_2);              //需要包含头文件<QDir>
     if(!dir.exists("temp"))
     {
         dir.mkdir("temp");
@@ -120,19 +120,19 @@ void MyThread_2::run()
     {
         qDebug()<<"文件夹已经存在";
     }
-    saveDir = saveDir+"/temp/";
+    saveDir_2= saveDir_2+"/temp/";
 
     //4、获取文件完整路径（文件夹+文件名）
-    QString fullFilename = saveDir+newUrl_2.fileName()+".jpg";
-    //    QString full = saveDir + "2";
-    //    QString fullFilename = full+".jpg";
-    if(QFile::exists(fullFilename))
+    QString fullFilename_2 = saveDir_2+newUrl_2.fileName()+".jpg";
+    //    QString full = saveDir_2 + "2";
+    //    QString fullFilename_2 = full+".jpg";
+    if(QFile::exists(fullFilename_2))
     {
-        QFile::remove(fullFilename);
+        QFile::remove(fullFilename_2);
         qDebug()<<"该图片已经存在";
     }
 
-    onlineFile_2 = new QFile(fullFilename);
+    onlineFile_2 = new QFile(fullFilename_2);
     if(!onlineFile_2->open((QIODevice::WriteOnly)))
     {
         qDebug()<<"临时文件二打开错误";
@@ -183,17 +183,17 @@ void MyThread_3::run()
     QUrl newUrl_3 =QUrl::fromUserInput(m_URL_3);//需要包含头文件<QUrl>
     if(newUrl_3.isValid())
     {
-        qDebug()<<"有效下载地址1";
+        qDebug()<<"有效下载地址3";
     }
     else
     {
-        qDebug()<<"无效下载地址1";
+        qDebug()<<"无效下载地址3";
     }
 
     //3、获取文件保存地址(保存的文件夹)
-    QString saveDir = m_Path_3;
-    saveDir.replace('\\','/');
-    QDir dir(saveDir);              //需要包含头文件<QDir>
+    QString saveDir_3 = m_Path_3;
+    saveDir_3.replace('\\','/');
+    QDir dir(saveDir_3);              //需要包含头文件<QDir>
     if(!dir.exists("temp"))
     {
         dir.mkdir("temp");
@@ -201,19 +201,19 @@ void MyThread_3::run()
     {
         qDebug()<<"文件夹已经存在";
     }
-    saveDir = saveDir+"/temp/";
+    saveDir_3 = saveDir_3+"/temp/";
 
     //4、获取文件完整路径（文件夹+文件名）
-    QString fullFilename = saveDir+newUrl_3.fileName()+".jpg";
-    //    QString full = saveDir + "1";
-    //    QString fullFilename = full+".jpg";
-    if(QFile::exists(fullFilename))
+    QString fullFilename_3 = saveDir_3+newUrl_3.fileName()+".jpg";
+    //    QString full = saveDir_3 + "3";
+    //    QString fullFilename_3 = full+".jpg";
+    if(QFile::exists(fullFilename_3))
     {
-        QFile::remove(fullFilename);
+        QFile::remove(fullFilename_3);
         qDebug()<<"该图片已经存在";
     }
 
-    onlineFile_3 = new QFile(fullFilename);
+    onlineFile_3 = new QFile(fullFilename_3);
     if(!onlineFile_3->open((QIODevice::WriteOnly)))
     {
         qDebug()<<"临时文件一打开错误";
@@ -235,7 +235,7 @@ void MyThread_3::run()
 
     connect(reply_3,&QNetworkReply::readyRead,this,[=](){
         onlineFile_3->write(reply_3->readAll());
-        qDebug()<<"图片一下载成功";
+        qDebug()<<"图片三下载成功";
     });
 
     this->exec();//?

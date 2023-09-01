@@ -31,10 +31,10 @@ void MainWindow::on_pushButton_clicked()
 {//void downLoadInfo(QString URL_1,QString Path_1,QString URL_2,QString Path_2,QString URL_3,QString Path_3);
     QString URL_1 = ui->URLlineEdit_1->text().trimmed();
     QString Path_1 = ui->PATHlineEdit_1->text().trimmed();
-    QString URL_2 = ui->URLlineEdit_1->text().trimmed();
-    QString Path_2 = ui->PATHlineEdit_1->text().trimmed();
-    QString URL_3 = ui->URLlineEdit_1->text().trimmed();
-    QString Path_3 = ui->PATHlineEdit_1->text().trimmed();
+    QString URL_2 = ui->URLlineEdit_2->text().trimmed();
+    QString Path_2 = ui->PATHlineEdit_2->text().trimmed();
+    QString URL_3 = ui->URLlineEdit_3->text().trimmed();
+    QString Path_3 = ui->PATHlineEdit_3->text().trimmed();
     emit downLoadInfo_1(URL_1,Path_1);
     emit downLoadInfo_2(URL_2,Path_2);
     emit downLoadInfo_3(URL_3,Path_3);//转到2、将URL和Path传给子线程
