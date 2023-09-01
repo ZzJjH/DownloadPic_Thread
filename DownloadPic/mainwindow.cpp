@@ -82,6 +82,11 @@ void MainWindow::receFilename(QString filename_1)
 
     //4、显示图片
     QPixmap pixmap_1(m_filename_1);
+
+    //label适应图片大小
+    pixmap_1.scaled(ui->showpic_1->size(), Qt::KeepAspectRatio);
+    ui->showpic_1->setScaledContents(true);
+
     ui->showpic_1->setPixmap(m_filename_1);
     qDebug()<<"显示图片1"<<m_filename_1;
 }
@@ -92,6 +97,11 @@ void MainWindow::receFilename_2(QString filename_2)
 
 
     QPixmap pixmap_2(m_filename_2);
+
+    //label适应图片大小
+    pixmap_2.scaled(ui->showpic_2->size(), Qt::KeepAspectRatio);
+    ui->showpic_2->setScaledContents(true);
+
     ui->showpic_2->setPixmap(m_filename_2);
     qDebug()<<"显示图片2"<<m_filename_2;
 }
@@ -102,7 +112,15 @@ void MainWindow::receFilename_3(QString filename_3)
 
 
     QPixmap pixmap_3(m_filename_3);
+
+    //label适应图片大小
+    pixmap_3.scaled(ui->showpic_3->size(), Qt::KeepAspectRatio);
+    ui->showpic_3->setScaledContents(true);
+
     ui->showpic_3->setPixmap(m_filename_3);
     qDebug()<<"显示图片3"<<m_filename_3;
+    /*pixmap->scaled(ui->label->size();
+
+ui->label->setScaledContents(true);*/
 }
 
