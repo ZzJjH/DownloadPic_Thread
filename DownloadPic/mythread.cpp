@@ -42,7 +42,7 @@ void MyThread_1::run()
     saveDir_1 = saveDir_1+"/temp/";
 
     //4、获取文件完整路径（文件夹+文件名）
-    QString fullFilename_1 = saveDir_1+newUrl_1.fileName()+".jpg";
+    fullFilename_1 = saveDir_1+newUrl_1.fileName()+".jpg";
     //    QString full = saveDir_1 + "1";
     //    QString fullFilename_1 = full+".jpg";
     if(QFile::exists(fullFilename_1))
@@ -128,7 +128,7 @@ void MyThread_2::run()
     saveDir_2= saveDir_2+"/temp/";
 
     //4、获取文件完整路径（文件夹+文件名）
-    QString fullFilename_2 = saveDir_2+newUrl_2.fileName()+".jpg";
+    fullFilename_2 = saveDir_2+newUrl_2.fileName()+".jpg";
     //    QString full = saveDir_2 + "2";
     //    QString fullFilename_2 = full+".jpg";
     if(QFile::exists(fullFilename_2))
@@ -147,7 +147,8 @@ void MyThread_2::run()
 
     reply_2 = networkmanager_2.get(QNetworkRequest(newUrl_2));
     connect(reply_2,&QNetworkReply::finished,this,[=](){
-        qDebug()<<"reply_1完成";
+        qDebug()<<"reply_2完成";
+        emit sendFilename(fullFilename_2);
         QFileInfo fileInfo;
         fileInfo.setFile(onlineFile_2->fileName());
         onlineFile_2->close();
@@ -209,7 +210,7 @@ void MyThread_3::run()
     saveDir_3 = saveDir_3+"/temp/";
 
     //4、获取文件完整路径（文件夹+文件名）
-    QString fullFilename_3 = saveDir_3+newUrl_3.fileName()+".jpg";
+    fullFilename_3 = saveDir_3+newUrl_3.fileName()+".jpg";
     //    QString full = saveDir_3 + "3";
     //    QString fullFilename_3 = full+".jpg";
     if(QFile::exists(fullFilename_3))
@@ -228,7 +229,8 @@ void MyThread_3::run()
 
     reply_3 = networkmanager_3.get(QNetworkRequest(newUrl_3));
     connect(reply_3,&QNetworkReply::finished,this,[=](){
-        qDebug()<<"reply_1完成";
+        qDebug()<<"reply_3完成";
+        emit sendFilename(fullFilename_3);
         QFileInfo fileInfo;
         fileInfo.setFile(onlineFile_3->fileName());
         onlineFile_3->close();

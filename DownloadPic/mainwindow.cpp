@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     //3、子线程将下载的图片路径传给主线程
     connect(SubThread_1,&MyThread_1::sendFilename,this,&MainWindow::receFilename);
+    connect(SubThread_2,&MyThread_2::sendFilename,this,&MainWindow::receFilename_2);
+    connect(SubThread_3,&MyThread_3::sendFilename,this,&MainWindow::receFilename_3);
 
 
 
@@ -81,6 +83,26 @@ void MainWindow::receFilename(QString filename_1)
     //4、显示图片
     QPixmap pixmap_1(m_filename_1);
     ui->showpic_1->setPixmap(m_filename_1);
-    qDebug()<<"显示图片"<<m_filename_1;
+    qDebug()<<"显示图片1"<<m_filename_1;
+}
+
+void MainWindow::receFilename_2(QString filename_2)
+{
+    m_filename_2 = filename_2;
+
+
+    QPixmap pixmap_2(m_filename_2);
+    ui->showpic_2->setPixmap(m_filename_2);
+    qDebug()<<"显示图片2"<<m_filename_2;
+}
+
+void MainWindow::receFilename_3(QString filename_3)
+{
+    m_filename_3 = filename_3;
+
+
+    QPixmap pixmap_3(m_filename_3);
+    ui->showpic_3->setPixmap(m_filename_3);
+    qDebug()<<"显示图片3"<<m_filename_3;
 }
 

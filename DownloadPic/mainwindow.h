@@ -20,6 +20,8 @@ public:
     MyThread_2 *SubThread_2 = new MyThread_2;
     MyThread_3 *SubThread_3 = new MyThread_3;
     QString m_filename_1;
+    QString m_filename_2;
+    QString m_filename_3;
 
 
 private:
@@ -33,5 +35,7 @@ signals:
 private slots:
     void on_pushButton_clicked();
     void receFilename(QString filename_1);
+    void receFilename_2(QString filename_2);
+    void receFilename_3(QString filename_3);
 };
 #endif // MAINWINDOW_H

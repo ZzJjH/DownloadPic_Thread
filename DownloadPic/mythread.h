@@ -22,6 +22,7 @@ signals:
 private:
     QString m_URL_1;
     QString m_Path_1;
+    QString fullFilename_1;
     QNetworkAccessManager networkmanager_1;
     QNetworkReply *reply_1;
     QFile *onlineFile_1;
@@ -47,6 +48,7 @@ public:
 private:
     QString m_URL_2;
     QString m_Path_2;
+    QString fullFilename_2;
     QNetworkAccessManager networkmanager_2;
     QNetworkReply *reply_2;
     QFile *onlineFile_2;
@@ -55,6 +57,7 @@ public:
     void RecedownLoadInfo_2(QString URL_2,QString Path_2);
 
 signals:
+    void sendFilename(QString filename_2);
 
 //重写虚函数
 protected:
@@ -72,10 +75,11 @@ public:
     explicit MyThread_3(QObject *parent = nullptr);
 
 signals:
-
+    void sendFilename(QString filename_3);
 private:
     QString m_URL_3;
     QString m_Path_3;
+    QString fullFilename_3;
     QNetworkAccessManager networkmanager_3;
     QNetworkReply *reply_3;
     QFile *onlineFile_3;
