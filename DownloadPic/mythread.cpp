@@ -1,6 +1,5 @@
 #include "mythread.h"
 #include<QDebug>
-
 MyThread_1::MyThread_1(QObject *parent)
     : QThread{parent}
 {
@@ -52,6 +51,8 @@ void MyThread_1::run()
         qDebug()<<"该图片已经存在";
     }
 
+
+
     onlineFile_1 = new QFile(fullFilename_1);
     if(!onlineFile_1->open((QIODevice::WriteOnly)))
     {
@@ -62,7 +63,8 @@ void MyThread_1::run()
 
     reply_1 = networkmanager_1.get(QNetworkRequest(newUrl_1));
     connect(reply_1,&QNetworkReply::finished,this,[=](){
-        qDebug()<<"reply_1完成";
+        qDebug()<<"reply_1完成";//在最后
+        emit sendFilename(fullFilename_1);//给mainwindow传输下载的图片地址
         QFileInfo fileInfo;
         fileInfo.setFile(onlineFile_1->fileName());
         onlineFile_1->close();
@@ -74,10 +76,13 @@ void MyThread_1::run()
 
     connect(reply_1,&QNetworkReply::readyRead,this,[=](){
         onlineFile_1->write(reply_1->readAll());
-        qDebug()<<"图片一下载成功";
+        //qDebug()<<"图片一下载成功";
     });
 
+
+
     this->exec();//?
+
 }
 
 
@@ -216,7 +221,7 @@ void MyThread_3::run()
     onlineFile_3 = new QFile(fullFilename_3);
     if(!onlineFile_3->open((QIODevice::WriteOnly)))
     {
-        qDebug()<<"临时文件一打开错误";
+        qDebug()<<"临时文件三打开错误";
         //QMessageBox::information(this,"错误","临时文件1打开错误");
         return;
     }

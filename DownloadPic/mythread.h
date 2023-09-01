@@ -17,6 +17,7 @@ public:
     explicit MyThread_1(QObject *parent = nullptr);
 
 signals:
+    void sendFilename(QString filename_1);
 
 private:
     QString m_URL_1;

@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include<mythread.h>//
+#include<QPixmap>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -17,6 +18,16 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, &MainWindow::downLoadInfo_1,SubThread_1,&MyThread_1::RecedownLoadInfo_1);
     connect(this, &MainWindow::downLoadInfo_2,SubThread_2,&MyThread_2::RecedownLoadInfo_2);
     connect(this, &MainWindow::downLoadInfo_3,SubThread_3,&MyThread_3::RecedownLoadInfo_3);
+
+
+    //3、子线程将下载的图片路径传给主线程
+    connect(SubThread_1,&MyThread_1::sendFilename,this,&MainWindow::receFilename);
+
+
+
+//    connect(SubThread_1,&MyThread_1::finished,this,[=](){
+//        qDebug()<<"线程一结束";//未显示
+//    });
 
 
 }
@@ -43,6 +54,11 @@ void MainWindow::on_pushButton_clicked()
     if((!(URL_1.isEmpty()))&&(!(Path_1.isEmpty())))
     {
         SubThread_1->start();
+//        //4、显示图片
+//        QPixmap pixmap_1(m_filename_1);
+//        ui->showpic_1->setPixmap(m_filename_1);
+//        qDebug()<<"显示图片";
+        //qDebug()<<"666";(未显示)
     }
 
     if((!(URL_2.isEmpty()))&&(!(Path_2.isEmpty())))
@@ -54,5 +70,17 @@ void MainWindow::on_pushButton_clicked()
         SubThread_3->start();
     }
 
+
+
+}
+
+void MainWindow::receFilename(QString filename_1)
+{
+    m_filename_1 = filename_1;
+
+    //4、显示图片
+    QPixmap pixmap_1(m_filename_1);
+    ui->showpic_1->setPixmap(m_filename_1);
+    qDebug()<<"显示图片"<<m_filename_1;
 }
 

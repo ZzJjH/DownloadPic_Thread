@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>390</width>
-    <height>476</height>
+    <width>1213</width>
+    <height>481</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -172,7 +172,7 @@
      <string>下载</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -200,13 +200,26 @@
      </item>
     </layout>
    </widget>
+   <widget class="QLabel" name="showpic_1">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>30</y>
+      <width>661</width>
+      <height>401</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>图片一</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>390</width>
+     <width>1213</width>
      <height>21</height>
     </rect>
    </property>

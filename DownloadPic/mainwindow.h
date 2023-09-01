@@ -19,6 +19,8 @@ public:
     MyThread_1 *SubThread_1 = new MyThread_1;
     MyThread_2 *SubThread_2 = new MyThread_2;
     MyThread_3 *SubThread_3 = new MyThread_3;
+    QString m_filename_1;
+
 
 private:
     Ui::MainWindow *ui;
@@ -30,5 +32,6 @@ signals:
 
 private slots:
     void on_pushButton_clicked();
+    void receFilename(QString filename_1);
 };
 #endif // MAINWINDOW_H
