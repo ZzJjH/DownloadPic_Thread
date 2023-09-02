@@ -60,7 +60,7 @@ void MyThread_1::run()
         //QMessageBox::information(this,"错误","临时文件1打开错误");
         return;
     }
-
+    QNetworkAccessManager networkmanager_1;
     reply_1 = networkmanager_1.get(QNetworkRequest(newUrl_1));
     connect(reply_1,&QNetworkReply::finished,this,[=](){
       //  qDebug()<<"reply_1完成";//在最后
@@ -147,7 +147,7 @@ void MyThread_2::run()
         //QMessageBox::information(this,"错误","临时文件2打开错误");
         return;
     }
-
+    QNetworkAccessManager networkmanager_2;
     reply_2 = networkmanager_2.get(QNetworkRequest(newUrl_2));
     connect(reply_2,&QNetworkReply::finished,this,[=](){
        // qDebug()<<"reply_2完成";
@@ -230,7 +230,7 @@ void MyThread_3::run()
         //QMessageBox::information(this,"错误","临时文件1打开错误");
         return;
     }
-
+    QNetworkAccessManager networkmanager_3;
     reply_3 = networkmanager_3.get(QNetworkRequest(newUrl_3));
     connect(reply_3,&QNetworkReply::finished,this,[=](){
        // qDebug()<<"reply_3完成";

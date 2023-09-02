@@ -23,7 +23,7 @@ private:
     QString m_URL_1;
     QString m_Path_1;
     QString fullFilename_1;
-    QNetworkAccessManager networkmanager_1;
+    //QNetworkAccessManager networkmanager_1;
     QNetworkReply *reply_1;
     QFile *onlineFile_1;
 
@@ -49,7 +49,7 @@ private:
     QString m_URL_2;
     QString m_Path_2;
     QString fullFilename_2;
-    QNetworkAccessManager networkmanager_2;
+    //QNetworkAccessManager networkmanager_2;
     QNetworkReply *reply_2;
     QFile *onlineFile_2;
 
@@ -80,7 +80,7 @@ private:
     QString m_URL_3;
     QString m_Path_3;
     QString fullFilename_3;
-    QNetworkAccessManager networkmanager_3;
+    //QNetworkAccessManager networkmanager_3;
     QNetworkReply *reply_3;
     QFile *onlineFile_3;
 
