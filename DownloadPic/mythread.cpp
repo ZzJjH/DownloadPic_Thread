@@ -6,6 +6,7 @@ MyThread_1::MyThread_1(QObject *parent)
 
 }
 
+//接收主线程的URL,Path
 void MyThread_1::RecedownLoadInfo_1(QString URL_1, QString Path_1)
 {
     m_URL_1 = URL_1;
@@ -15,7 +16,7 @@ void MyThread_1::RecedownLoadInfo_1(QString URL_1, QString Path_1)
 void MyThread_1::run()
 {
     qDebug()<<"子线程一";
-    //1、获取URL(m_URL,m_Path)
+    //1、获取URL(m_URL,m_Path)RecedownLoadInfo_1
 
     //2、识别URL是否可用
     QUrl newUrl_1 =QUrl::fromUserInput(m_URL_1);//需要包含头文件<QUrl>
@@ -30,7 +31,7 @@ void MyThread_1::run()
 
     //3、获取文件保存地址(保存的文件夹)
     QString saveDir_1 = m_Path_1;
-    saveDir_1.replace('\\','/');
+    saveDir_1.replace('\\','/');      //用户手动输入的保存路径\会被识别成转义字符，因此需要转换
     QDir dir(saveDir_1);              //需要包含头文件<QDir>
     if(!dir.exists("temp"))
     {
@@ -51,8 +52,6 @@ void MyThread_1::run()
       //  qDebug()<<"该图片已经存在";
     }
 
-
-
     onlineFile_1 = new QFile(fullFilename_1);
     if(!onlineFile_1->open((QIODevice::WriteOnly)))
     {
@@ -60,8 +59,11 @@ void MyThread_1::run()
         //QMessageBox::information(this,"错误","临时文件1打开错误");
         return;
     }
+
+    //开始下载
     QNetworkAccessManager networkmanager_1;
     reply_1 = networkmanager_1.get(QNetworkRequest(newUrl_1));
+
     connect(reply_1,&QNetworkReply::finished,this,[=](){
       //  qDebug()<<"reply_1完成";//在最后
         emit sendFilename(fullFilename_1);//给mainwindow传输下载的图片地址
@@ -72,19 +74,17 @@ void MyThread_1::run()
         onlineFile_1 = Q_NULLPTR;
         reply_1->deleteLater();
         reply_1 = Q_NULLPTR;
-        QThread::quit();
+
+        QThread::quit();//**this->exec()需要quit来手动退出循环
 
     });
 
     connect(reply_1,&QNetworkReply::readyRead,this,[=](){
         onlineFile_1->write(reply_1->readAll());
         //qDebug()<<"图片一下载成功";
-
     });
 
-
-
-    this->exec();//?
+    this->exec();//**网络下载操作需要事件循环来处理
 
 }
 

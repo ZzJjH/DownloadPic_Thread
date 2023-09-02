@@ -1,7 +1,7 @@
 #ifndef MYTHREAD_H
 #define MYTHREAD_H
 
-#include <QThread>//1、添加头文件
+#include <QThread>//添加头文件
 #include<QUrl>
 #include<QDir>
 #include<QFile>
@@ -10,7 +10,7 @@
 #include<QMessageBox>
 
 /*子线程1*/
-class MyThread_1 : public QThread//2、继承
+class MyThread_1 : public QThread//继承
 {
     Q_OBJECT
 public:
@@ -20,15 +20,22 @@ signals:
     void sendFilename(QString filename_1);
 
 private:
+    //图片下载地址和保存路径
     QString m_URL_1;
     QString m_Path_1;
+
+    //带文件名的保存路径
     QString fullFilename_1;
+
     //QNetworkAccessManager networkmanager_1;
     QNetworkReply *reply_1;
+
+    //创建文件对象用于进行“写（下载）” 操作
     QFile *onlineFile_1;
 
 //private slots://自定义槽用于接受用户输入的下载信息
 public:
+    //将主窗口的URL，Path传输给m_URL,m_Path
     void RecedownLoadInfo_1(QString URL_1,QString Path_1);
 
 //重写虚函数
