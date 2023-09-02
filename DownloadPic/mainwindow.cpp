@@ -8,7 +8,11 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    setFixedSize(1200,500);
+    QString curPath = QDir::currentPath();
+    ui->PATHlineEdit_1->setText(curPath);
+    ui->PATHlineEdit_2->setText(curPath);
+    ui->PATHlineEdit_3->setText(curPath);
 //    //1、创建子线程对象(先包含头文件)
 //    MyThread_1 *SubThread_1 = new MyThread_1;
 //    MyThread_2 *SubThread_2 = new MyThread_2;
@@ -66,6 +70,7 @@ void MainWindow::on_pushButton_clicked()
     if((!(URL_2.isEmpty()))&&(!(Path_2.isEmpty())))
     {
         SubThread_2->start();
+
     }
     if((!(URL_3.isEmpty()))&&(!(Path_3.isEmpty())))
     {
